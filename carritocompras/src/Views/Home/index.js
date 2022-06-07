@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./styles.css"
+import "./styles.css";
 class Home extends Component {
   constructor() {
     super();
@@ -26,21 +26,24 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.productos.map((producto) => {
-          console.log(producto);
-          return (
-            <div>
-              <h2>{producto.PRODUCTO}</h2>
-              <img src={producto.IMAGEN}/>
-              <h4>{producto.DESCRIPCION}</h4>
-              <button>Agregar al carrito</button>
-            </div>
-          );
-        })}
+      <div className="container">
+        <h1>Página de Productos</h1>
+        <div className="wrapper">
+          {this.state.productos.map((producto) => {
+            console.log(producto);
+            return (
+              <div>
+                <h2>{producto.PRODUCTO}</h2>
+                <img src={producto.IMAGEN} />
+                <h4>{producto.DESCRIPCION}</h4>
+                <button>Agregar al carrito</button>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
 }
 
-export default Home
+export default Home;
