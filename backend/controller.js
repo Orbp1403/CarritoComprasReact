@@ -35,6 +35,6 @@ module.exports = {
         IMAGEN: IMAGEN,
       }
     );
-    //console.log(result);
+    console.log(result);
   },
 };

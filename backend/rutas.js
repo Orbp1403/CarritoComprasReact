@@ -26,7 +26,7 @@ router.get("/getcategorias", async (req, res) => {
 
 router.post("/agregarproducto", async (req, res) => {
   try {
-    //console.log(req.body);
+    console.log(req.body);
     data = await sqlcontroller.addproducto(
       req.body.sku,
       req.body.producto,

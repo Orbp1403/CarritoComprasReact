@@ -55,15 +55,20 @@ class Producto extends Component {
       .catch((error) => console.log("error", error));
   }
 
-  subirarchivo() {
+  async subirarchivo() {
     var file = document.querySelector("input[type=file]")["files"][0];
+    let result = "";
     var reader = new FileReader();
-    reader.onload = function () {
+    reader.onload = await function () {
       this.base64String = reader.result;
       this.imageBase64Stringsep = this.base64String;
       //console.log(this.base64String);
     };
     reader.readAsDataURL(file);
+    console.log(this.base64String);
+    this.setState({
+      imagen: reader.result,
+    });
   }
 
   handleSubmit(event) {
@@ -79,7 +84,7 @@ class Producto extends Component {
       precio: this.state.precio,
       estado: this.state.estado,
       categoria: this.state.categoria,
-      imagen: this.base64String,
+      imagen: this.state.imagen,
     });
 
     var requestOptions = {
@@ -89,8 +94,9 @@ class Producto extends Component {
       redirect: "follow",
     };
 
-    fetch("http://localhost:4000/agregarproducto", requestOptions)
-      .then((response) => response.text())
+    fetch("http://localhost:4000/agregarproducto", requestOptions).then(
+      (response) => response.text()
+    );
   }
 
   render() {
@@ -211,10 +217,10 @@ class Producto extends Component {
               <label>
                 Imagen:
                 <input
-                  type="file"
+                  type="text"
                   name="imagen"
-                  accept="image/*"
-                  onChange={this.subirarchivo}
+                  value={this.state.imagen}
+                  onChange={this.handleInputChange}
                 />
               </label>
             </div>
