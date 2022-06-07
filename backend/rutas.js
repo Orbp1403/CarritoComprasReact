@@ -24,6 +24,15 @@ router.get("/getcategorias", async (req, res) => {
   }
 });
 
+router.get("/getproductos", async (req, res) => {
+  try {
+      data = await sqlcontroller.selectproductos();
+      res.status(200).send(data)
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
 router.post("/agregarproducto", async (req, res) => {
   try {
     console.log(req.body);

@@ -9,6 +9,10 @@ module.exports = {
     const result = await conn.executeStoredProcedure("OBTENERCATEGORIASPROD");
     return result.data[0];
   },
+  async selectproductos(){
+      const result = await conn.executeStoredProcedure("OBTENERPRODUCTOS")
+      return result.data[0]
+  },
   async addproducto(
     SKU,
     PRODUCTO,
