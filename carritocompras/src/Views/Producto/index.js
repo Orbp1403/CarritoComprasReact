@@ -44,7 +44,7 @@ class Producto extends Component {
           estados: JSON.parse(result),
         });
       })
-      .catch((error) => //console.log("error", error));
+      .catch((error) => console.log("error", error));
     fetch("http://localhost:4000/getcategorias", requestOptions)
       .then((response) => response.text())
       .then((result) => {
@@ -52,7 +52,7 @@ class Producto extends Component {
           categorias: JSON.parse(result),
         });
       })
-      .catch((error) => //console.log("error", error));
+      .catch((error) => console.log("error", error));
   }
 
   async subirarchivo() {
