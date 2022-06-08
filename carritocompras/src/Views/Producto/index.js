@@ -24,7 +24,7 @@ class Producto extends Component {
 
   handleInputChange(event) {
     const value = event.target.value;
-    //console.log(event.target.value);
+    ////console.log(event.target.value);
     const name = event.target.name;
     this.setState({
       [name]: value,
@@ -39,12 +39,12 @@ class Producto extends Component {
     fetch("http://localhost:4000/getestados", requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        //console.log(JSON.parse(result));
+        ////console.log(JSON.parse(result));
         this.setState({
           estados: JSON.parse(result),
         });
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => //console.log("error", error));
     fetch("http://localhost:4000/getcategorias", requestOptions)
       .then((response) => response.text())
       .then((result) => {
@@ -52,7 +52,7 @@ class Producto extends Component {
           categorias: JSON.parse(result),
         });
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => //console.log("error", error));
   }
 
   async subirarchivo() {
@@ -62,10 +62,10 @@ class Producto extends Component {
     reader.onload = await function () {
       this.base64String = reader.result;
       this.imageBase64Stringsep = this.base64String;
-      //console.log(this.base64String);
+      ////console.log(this.base64String);
     };
     reader.readAsDataURL(file);
-    console.log(this.base64String);
+    //console.log(this.base64String);
     this.setState({
       imagen: reader.result,
     });
@@ -184,7 +184,7 @@ class Producto extends Component {
                 >
                   <option></option>
                   {this.state.estados.map((option) => {
-                    //console.log(option);
+                    ////console.log(option);
                     return (
                       <option key={option.ID_ESTADO} value={option.ID_ESTADO}>
                         {option.NOMBRE_ESTADO}
